@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 
-driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+
 # Amazon
 # driver.get("https://www.amazon.com/LIFXIZE-Helmet-Hanger-Rotation-Motorcycle/dp/B0B6P2GSWH/ref=sr_1_8?crid=3LOBS1DFQZTUF&dib=eyJ2IjoiMSJ9.ic0jB5fnVNQIQgUSOi-wFreGQ8S_uZgaftD11mRQ-RHwv-KqblV61sZkQ22Q1Nxo8MdE-LwzuQLN-GXJWkVS047aa67rZNHaV73-jPeCzXIJ_Y80fL2M0JFblR9YHJjyu5A_tsBipIdORbUvvnyaITe8imrWRTqtc6Xmtfi2Pq--ZcK7ivFTNJsWLNk5pb-IidzOl5-D-mJuxaUpDwn8QgjUtNTe_3AeOhPg4GJoNmk.c1cz9PAHbVLclnNBDF4tmqLnpsFx3LlfQNM6ecmom5A&dib_tag=se&keywords=indian%2Bmotorcycle&qid=1776832095&sprefix=Indian%2Bmoto%2Caps%2C350&sr=8-8&th=1")
 #
@@ -17,7 +17,9 @@ driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
 
 # Wikipedia
 # Much cleaner than using Beautiful soup
-driver.get("https://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_2010")
+user_input = input("What year brings you back? ").strip()
+driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()))
+driver.get(f"https://en.wikipedia.org/wiki/Billboard_Year-End_Hot_100_singles_of_{user_input}")
 table = driver.find_element(By.CSS_SELECTOR, "table.wikitable")
 top_100_rows = table.find_elements(By.CSS_SELECTOR, "tbody tr")
 # print(top_100_rows)
